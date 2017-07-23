@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot :list="checkList" :selections="selections" :select-all-change="selectAllChange">
+    <slot :list="checkList" :selections="selections" :check-all-change="checkAllChange">
     </slot>
   </div>
 </template>
@@ -15,32 +15,43 @@
     },
     props: {
       list: Array,
-      selectAll: Boolean
+      checkAll: Boolean
     },
     methods: {
+      /**
+       * 给列表数据设置 checked 键值，如果有指定 checked 的值，则使用指定的值，否则将选中的项设置为true
+       * @param checked {Boolean} 是否选中
+       */
       setCheckKey (checked) {
-        return this.list.map(item => {
+        this.checkList = this.list.map(item => {
           return {
             checked: typeof checked === 'boolean' ? checked : this.selections.includes(item),
             data: item
           }
         })
       },
-      selectAllChange () {
+      /**
+       * 手动更改全选按钮的值时，需要调用此方法，更新列表中 checked 的值
+       */
+      checkAllChange () {
         this.$nextTick(() => {
-          if (this.selectAll && this.selections.length !== this.checkList.length) {
-            this.checkList = this.setCheckKey(true)
+          if (this.checkAll && this.selections.length !== this.checkList.length) {
+            this.setCheckKey(true)
           } else if (this.selections.length !== 0) {
-            this.checkList = this.setCheckKey(false)
+            this.setCheckKey(false)
           }
         })
       }
     },
     computed: {
+      /**
+       * 选中的项
+       */
       selections: {
         get () {
           const selections = this.checkList.filter(item => item.checked).map(item => item.data)
-          selections.length === this.checkList.length ? this.$emit('update:selectAll', true) : this.$emit('update:selectAll', false)
+          // 更新 checkAll 的值
+          selections.length === this.checkList.length ? this.$emit('update:checkAll', true) : this.$emit('update:checkAll', false)
           this.$emit('selection-change', selections)
           return selections
         }
@@ -48,11 +59,11 @@
     },
     watch: {
       'list.length' () {
-        this.checkList = this.setCheckKey()
+        this.setCheckKey()
       }
     },
     mounted () {
-      this.checkList = this.setCheckKey()
+      this.setCheckKey()
     }
   }
 </script>
