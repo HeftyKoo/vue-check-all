@@ -22,7 +22,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, './dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        libraryTarget: "commonjs2"
     },
     module: {
         rules: [
