@@ -7,6 +7,8 @@
 
 [![NPM](https://nodei.co/npm/vue-check-all.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-check-all/)
 
+[中文](https://github.com/yeyuqiudeng/vue-check-all/blob/master/README.zh-CN.md)
+
 ## Description
 
 vue check all component。
@@ -49,14 +51,13 @@ vue check all component。
 
 ## Example
 
-### 基础用法
 ```vue
 <template>
   <check-all @selection-change="selectionChange" :list="list" :check-all.sync="checkAll">
     <template scope="scope">
       <label>
         <input type="checkbox" v-model="checkAll" @click="scope.checkAllChange">
-        全选
+        checkAll
       </label>
       <ul>
         <li v-for="item in scope.list" :key="item.data">
