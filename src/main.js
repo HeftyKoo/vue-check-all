@@ -1,6 +1,7 @@
 import CheckAll from './index.vue'
 
 const install = (Vue) => {
+   if (install.installed) return
   Vue.component(CheckAll.name, CheckAll)
 }
 
