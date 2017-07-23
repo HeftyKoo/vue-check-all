@@ -1,0 +1,1 @@
+# vue-check-all
