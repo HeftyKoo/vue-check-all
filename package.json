@@ -1,0 +1,42 @@
+{
+    "name": "vue-check-all",
+    "version": "1.0.0",
+    "description": "vue check all component",
+    "main": "dist/build.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "mb": "export PRODUCTION=1 && webpack --progress --hide-modules",
+        "wb": "set PRODUCTION=1 && webpack --progress --hide-modules",
+        "dev": "webpack-dev-server --progress --profile --colors --inline",
+        "port": "webpack-dev-server --progress --colors --inline --port 9090 "
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yeyuqiudeng/vue-check-all.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yeyuqiudeng/vue-check-all/issues"
+    },
+    "homepage": "https://github.com/yeyuqiudeng/vue-check-all#readme",
+    "keywords": [
+        "vue",
+        "vue-check-all",
+        "check all"
+    ],
+    "author": {
+        "name": "Hefty",
+        "email": "yeyuqiudeng@gmail.com"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "babel-loader": "^7.1.1",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "loglevel": "^1.4.1",
+        "vue-loader": "^12.2.2",
+        "vue-template-compiler": "^2.4.2",
+        "webpack": "^3.3.0",
+        "webpack-dev-server": "^2.6.0"
+    }
+}
