@@ -52,38 +52,38 @@ vue check all component。
 ### 基础用法
 ```vue
 <template>
-	<check-all @selection-change="selectionChange" :list="list" :check-all.sync="checkAll">
-      <template scope="scope">
-        <label>
-          <input type="checkbox" v-model="checkAll" @click="scope.checkAllChange">
-          全选
-        </label>
-        <ul>
-          <li v-for="item in scope.list" :key="item.data">
-            <label>
-              <input v-model="item.checked" type="checkbox">
-              {{item.data}}
-            </label>
-          </li>
-        </ul>
-      </template>
-    </check-all>
+  <check-all @selection-change="selectionChange" :list="list" :check-all.sync="checkAll">
+    <template scope="scope">
+      <label>
+        <input type="checkbox" v-model="checkAll" @click="scope.checkAllChange">
+        全选
+      </label>
+      <ul>
+        <li v-for="item in scope.list" :key="item.data">
+          <label>
+            <input v-model="item.checked" type="checkbox">
+            {{item.data}}
+          </label>
+        </li>
+      </ul>
+    </template>
+  </check-all>
 </template>
 
 <script>
-	export default {
-      data () {
-        return {
-          list: [1,2,3],
-          checkAll: true
-        }
-      },
-      methods: {
-        selectionChange (selections) {
-          console.log(selections)
-        }
+  export default {
+    data () {
+      return {
+        list: [1,2,3],
+        checkAll: true
       }
-	}
+    },
+    methods: {
+      selectionChange (selections) {
+        console.log(selections)
+      }
+    }
+  }
 </script>
 ```
 
